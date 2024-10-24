@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperação de Senha</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8d7da; 
+            margin: 0;
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh; 
+            color: #721c24; 
+        }
+
+        .header {
+            font-size: 40px; 
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 30px; 
+            text-align: center;
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+        }
+
+        .container {
+            max-width: 350px;
+            width: 100%;
+            background: white;
+            border-radius: 10px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+            padding: 20px; 
+            z-index: 1; 
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px; 
+            font-size: 24px; 
+            color: #dc3545; 
+            font-weight: bold;
+            border-bottom: 2px solid #dc3545; 
+            padding-bottom: 5px; 
+        }
+
+        .form-group {
+            margin-bottom: 15px; 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 4px; 
+            font-weight: bold;
+            color: #dc3545; 
+        }
+
+        input[type="tel"] {
+            width: 100%;
+            padding: 10px; 
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box; 
+            font-size: 14px; 
+        }
+
+        input:focus {
+            border-color: #dc3545; 
+            outline: none;
+            box-shadow: 0 0 6px rgba(220, 53, 69, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px; 
+            background-color: #dc3545; 
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px; 
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s; 
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); 
+        }
+
+        button:hover {
+            background-color: #c82333; 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            margin-top: 15px; 
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #721c24;
+        }
+
+        .success {
+            color: #155724; 
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="header">SOS SALTO</div>
+    
+    <div class="container">
+        <h1>Recuperação de Senha</h1>
+        <form id="recoveryForm">
+            <div class="form-group">
+                <label for="phone">Número de Telefone:</label>
+                <input type="tel" id="phone" required placeholder="Digite seu número de telefone" pattern="\(\d{2}\) \d{5}-\d{4}">
+            </div>
+            <button type="submit">Enviar Código</button>
+        </form>
+        <div id="message" class="message"></div>
+        
+        <div class="footer">
+            <p>Voltar ao <a href="login.html" style="color: #dc3545; text-decoration: none;">Login</a></p>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById('recoveryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const phone = document.getElementById('phone').value;
+
+            let message = document.getElementById('message');
+            message.textContent = '';
+            message.className = 'message'; // Reset class
+
+            // Simulação de envio de código
+            if (phone === "") {
+                message.textContent = 'Por favor, preencha o número de telefone.';
+                message.classList.add('error');
+                return;
+            }
+
+            // Simulação de sucesso no envio
+            message.textContent = 'Código de recuperação enviado para ' + phone + '!';
+            message.classList.add('success');
+        });
+    </script>
+</body>
+</html>
